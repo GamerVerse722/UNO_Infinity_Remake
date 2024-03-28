@@ -4,100 +4,57 @@
   },
   "4_Color_Uno": [
     {
-      "Name": "0",
-      "Number": "0",
-      "Amount": "1",
-      "Location": "",
-      "Color": "Red",
-      "Speed": false
+        "Name": "0",
+        "Amount": 1
     },
     {
-      "Name": "0",
-      "Number": "0",
-      "Amount": "1",
-      "Location": "",
-      "Color": "Blue",
-      "Speed": false
+        "Name": "1-9",
+        "Amount": 3,
+        "Speed": false
     },
     {
-      "Name": "0",
-      "Number": "0",
-      "Amount": "1",
-      "Location": "",
-      "Color": "Green",
-      "Speed": false
+        "Name": "1-9",
+        "Amount": 1,
+        "Speed": true
     },
     {
-      "Name": "0",
-      "Number": "0",
-      "Amount": "1",
-      "Location": "",
-      "Color": "Yellow",
-      "Speed": false
+        "Name": "Block",
+        "Amount": 4
     },
     {
-      "Name": "1-9",
-      "Number": "1",
-      "Amount": "3",
-      "Location": "",
-      "Color": "Red",
-      "Speed": false
+        "Name": "Reverse",
+        "Amount": 4
     },
     {
-      "Name": "1-9",
-      "Number": "1",
-      "Amount": "3",
-      "Location": "",
-      "Color": "Blue",
-      "Speed": false
+        "Name": "Replay",
+        "Amount": 4
     },
     {
-      "Name": "1-9",
-      "Number": "1",
-      "Amount": "3",
-      "Location": "",
-      "Color": "Green",
-      "Speed": false
+        "Name": "#",
+        "Amount": 1
     },
     {
-      "Name": "1-9",
-      "Number": "1",
-      "Amount": "3",
-      "Location": "",
-      "Color": "Yellow",
-      "Speed": false
+        "Name": "+1",
+        "Amount": 4
     },
     {
-      "Name": "1-9",
-      "Number": "2",
-      "Amount": "3",
-      "Location": "",
-      "Color": "Red",
-      "Speed": false
+        "Name": "+2",
+        "Amount": 3
     },
     {
-      "Name": "1-9",
-      "Number": "2",
-      "Amount": "3",
-      "Location": "",
-      "Color": "Blue",
-      "Speed": false
+        "Name": "+4",
+        "Amount": 1
     },
     {
-      "Name": "1-9",
-      "Number": "2",
-      "Amount": "3",
-      "Location": "",
-      "Color": "Green",
-      "Speed": false
+        "Name": "-1",
+        "Amount": 1
     },
     {
-      "Name": "1-9",
-      "Number": "2",
-      "Amount": "3",
-      "Location": "",
-      "Color": "Yellow",
-      "Speed": false
+        "Name": "Colorless",
+        "Amount": 1
+    },
+    {
+      "Name": "Wild"
     }
   ]
 }
