@@ -13,7 +13,9 @@ class Test:
         }
 
     class Inheritance:
-        def __init__(self, room=None, main='Temporary'):
+        def __init__(self, room=None, main=None):
+            if main is None:
+                main = []
             self.main = main
             self.main.append('Hi')
             self.current = room
@@ -32,7 +34,7 @@ class Test:
     def __dict__(self):
         inheritance_data = {}
         for room_code, room_data in self.room.items():
-            inheritance_data[room_code] = room_data["Inheritance Data"].__dict__()
+            inheritance_data[room_code] = room_data["Inheritance Data"].__dict__
         print('----------------------------------------------------------------')
         return {'Main': self.main, 'other': self.other, 'Inheritance': inheritance_data}
 
@@ -50,6 +52,6 @@ pprint.pprint(test_instance.__dict__(), indent=2)
 # Accessing and running a function in the Inheritance class
 test_instance.room['Among Us']["Inheritance Data"].add_data("New data")
 print('----------------------------------------------------------------')
-print(test_instance.room['Among Us']["Inheritance Data"].__dict__())
+print(test_instance.room['Among Us']["Inheritance Data"].__dict__)
 print('----------------------------------------------------------------')
 # pprint.pprint(dir(test_instance))

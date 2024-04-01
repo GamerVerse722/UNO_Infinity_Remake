@@ -1,7 +1,7 @@
 from flask import Flask, render_template, session, redirect, request, url_for
 from flask_socketio import SocketIO, join_room, leave_room  # type: ignore
 from utilities.function import Room, Usertime
-import threading
+# import threading
 import time
 
 app = Flask(__name__)
@@ -54,7 +54,7 @@ def form_room_join():
 
 @app.route('/data')
 def data():
-    return rooms.rooms
+    return rooms.__dict__()
 
 
 @app.route('/room/<code>')
@@ -82,6 +82,12 @@ def room_join():
 def handle_message(message):
     if rooms.room_exist(session['Room']):
         socketio.emit('message_history', [rooms.add_message(session['Room'], session['UUID'], message)], to=session['Room'])
+
+@socketio.on('shuffle cards')
+def shuffle_cards():
+    if rooms.room_exist(session['Room']):
+        print(rooms.rooms[session['Room']]['UnoData'])
+        rooms.rooms[session['Room']]['UnoData'].shuffle_cards()
 
 
 @socketio.on('disconnect')

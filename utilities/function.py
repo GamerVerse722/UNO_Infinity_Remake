@@ -1,8 +1,6 @@
-from typing import Dict, List, Any # Ignore
+from typing import Dict, List, Any
 from datetime import datetime
-import random
-import uuid
-import json
+import random, uuid, json
 
 
 def generate_code(length: int = 8) -> str:
@@ -135,6 +133,13 @@ class Room:
     def __init__(self) -> None:
         self.rooms: Dict[str, dict] = {}
 
+    def __dict__(self):
+        rooms_data_dict: dict = self.rooms
+        for room_code, room_data in rooms_data_dict.items():
+            if isinstance(room_data['UnoData'], self.Uno):
+                rooms_data_dict[room_code]['UnoData'] = room_data['UnoData'].to_dict()
+        return rooms_data_dict
+
     def write_file(self, output_dir: str) -> None:
         d = open(output_dir, 'w')
         d.write(json.dumps(self.rooms, indent=4))
@@ -145,10 +150,11 @@ class Room:
             code: str = generate_code(length)
             if code not in self.rooms:
                 break
-        room_data: Dict[str, str | dict | list] = {
+        room_data: Dict[str, Any] = {
             'RoomName': room_name,
             'MembersList': {},
-            'MessageHistory': []
+            'MessageHistory': [],
+            'UnoData': self.Uno()
         }
         self.rooms.update({code: room_data})
         return code
@@ -201,6 +207,86 @@ class Room:
     def get_room_members(self, code: str) -> dict:
         return self.rooms[code]['MembersList']
 
+
     class Uno:
-        def __init__(self):
-            pass
+        def __init__(self, room: str = '') -> None:
+            self.room: str = room
+            self.uno_deck: list = []
+            self.create_uno_deck()
+
+        def to_dict(self) -> Dict[str, Any]:
+            return {'Uno_Deck': self.uno_deck}
+
+        def create_uno_deck(self, mode: str='4-color') -> None:
+            with open('utilities/uno.json') as f:
+                data = json.load(f)
+
+            wild_override: Dict[str, int] = {}
+            wild_cards: List[dict] = []
+            wild_list: List[str] = []
+
+            if mode == '4-color':
+                wild_override = data['4-Color-Uno']['Wild_Override']
+                wild_cards = data['4-Color-Uno']['Uno-Configuration']
+                wild_list = data['Uno_Wildcards']
+
+            total_uno_deck: List[dict] = []
+            for x in wild_cards:
+                if x['Name'] == '1-9':
+                    for index in range(0, 9):
+                        for color in ['Red', 'Blue', 'Green', 'Yellow']:
+                            for _ in range(0, x['Amount']):
+                                var = {
+                                    "Name": '1-9',
+                                    "Number": index + 1,
+                                    "Color": color,
+                                    "Speed": x['Speed']
+                                }
+                                total_uno_deck.append(var)
+
+                elif x['Name'] in ['0', 'Block', 'Reverse', 'Replay', '#', '+1', '+2', '+4', '-1']:
+                    for color in ['Red', 'Blue', 'Green', 'Yellow']:
+                        zero: str = ''
+                        if x['Name'] == '0':
+                            zero = '0'
+                        for _ in range(0, x['Amount']):
+                            var = {
+                                "Name": x['Name'],
+                                "Number": zero,
+                                "Color": color,
+                                "Speed": False
+                            }
+                            total_uno_deck.append(var)
+
+                elif x['Name'] == 'Colorless':
+                    for index in range(0, 10):
+                        var = {
+                            "Name": x['Name'],
+                            "Number": index,
+                            "Color": 'Colorless',
+                            "Speed": False
+                        }
+                        total_uno_deck.append(var)
+
+                elif x['Name'] == 'Wild':
+                    for card in wild_list:
+                        number: int = 1
+                        if wild_override.get(card, False):
+                            number = wild_override[card]
+                        for _ in range(0, int(number)):
+                            var = {
+                                "Name": card,
+                                "Number": '',
+                                "Color": 'Wild',
+                                "Speed": False
+                            }
+                            total_uno_deck.append(var)
+                else:
+                    print(f'----------------------------------------------------------------')
+                    print(f'{x=}')
+                    print('----------------------------------------------------------------')
+
+            self.uno_deck = total_uno_deck
+
+        def shuffle_cards(self) -> None:
+            random.shuffle(self.uno_deck)

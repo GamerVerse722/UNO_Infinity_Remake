@@ -49,3 +49,7 @@ function copyCodeToClipboard() {
 function escapeHTMLString(inputString) {
     return inputString.replace(/</g, '&lt;').replace(/>/g, '&gt;');
 }
+
+function shuffleCards() {
+    socket.emit('shuffle cards');
+}

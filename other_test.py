@@ -9,7 +9,7 @@ class MyDict(TypedDict):
     Speed: bool
 
 
-with open('utilities/uno.json') as f:
+with open('utilities/back.json') as f:
     data = json.load(f)
 
 final_list = []
@@ -91,11 +91,12 @@ for x in my_dict:
             final_list.append(var)
 
     elif x['Name'] == 'Wild':
+        print(wild_cards)
         for card in wild_cards:
+            number = 1
+            # print(card)
             if wild_override.get(card, False):
                 number = wild_override[card]
-            else:
-                number = 1
             for _ in range(0, int(number)):
                 var = {
                     "Name": card,
@@ -108,8 +109,8 @@ for x in my_dict:
         print(f'----------------------------------------------------------------')
         print(f'{x=}')
         print('----------------------------------------------------------------')
-
-pprint.pprint(final_list)
+print('----------------------------------------------------------------')
+# pprint.pprint(final_list)
 pprint.pprint(len(final_list))
 with open('utilities/uno_data_test.json', 'w') as f:
     json.dump(final_list, f, indent=4)
