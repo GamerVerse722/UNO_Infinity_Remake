@@ -1,6 +1,6 @@
 from typing import Dict, List, Any
 from datetime import datetime
-import random, uuid, json
+import random, uuid, json, copy
 
 
 def generate_code(length: int = 8) -> str:
@@ -134,7 +134,7 @@ class Room:
         self.rooms: Dict[str, dict] = {}
 
     def __dict__(self):
-        rooms_data_dict: dict = self.rooms
+        rooms_data_dict: dict = copy.deepcopy(self.rooms)
         for room_code, room_data in rooms_data_dict.items():
             if isinstance(room_data['UnoData'], self.Uno):
                 rooms_data_dict[room_code]['UnoData'] = room_data['UnoData'].to_dict()
