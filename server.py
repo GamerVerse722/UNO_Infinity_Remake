@@ -76,7 +76,7 @@ def room(code):
 
 @socketio.on('room join')
 def room_join():
-    if rooms.room_exist(session['Room']):
+    if rooms.room_exist(session.get('Room', False)):
         join_room(session['Room'])
         join_room(session['UUID'])
         socketio.emit('member_list', rooms.get_room_members(session['Room']), to=session['Room'])
@@ -85,17 +85,17 @@ def room_join():
 
 @socketio.on('room messages')
 def handle_message(message):
-    if rooms.room_exist(session['Room']):
+    if rooms.room_exist(session.get('Room', False)):
         socketio.emit('message_history', [rooms.add_message(session['Room'], session['UUID'], message)], to=session['Room'])
 
 @socketio.on('member_list')
 def member_list():
-    if rooms.room_exist(session['Room']):
+    if rooms.room_exist(session.get('Room', False)):
         print(rooms.get_room_members_list(session['Room']))
 
 @socketio.on('shuffle cards')
 def shuffle_cards():
-    if rooms.room_exist(session['Room']):
+    if rooms.room_exist(session.get('Room', False)):
         rooms.rooms[session['Room']]['UnoData'].shuffle_cards()
 
 

@@ -217,7 +217,6 @@ class Room:
             self.uno_deck: List[Dict[str, Any]] = []
             self.discard_pile: List[Dict[str, Any]] = []
             self.player_data: Dict[str, Any] = {}
-            self.create_uno_deck()
 
         def to_dict(self) -> Dict[str, Any]:
             return {'Uno_Deck': self.uno_deck,
