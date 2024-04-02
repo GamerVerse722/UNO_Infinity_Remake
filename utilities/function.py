@@ -131,9 +131,9 @@ class Usertime:
 
 class Room:
     def __init__(self) -> None:
-        self.rooms: Dict[str, dict] = {}
+        self.rooms: Dict[str, Any] = {}
 
-    def __dict__(self):
+    def __dict__(self) -> dict: # type: ignore
         rooms_data_dict: dict = copy.deepcopy(self.rooms)
         for room_code, room_data in rooms_data_dict.items():
             if isinstance(room_data['UnoData'], self.Uno):
@@ -142,7 +142,7 @@ class Room:
 
     def write_file(self, output_dir: str) -> None:
         d = open(output_dir, 'w')
-        d.write(json.dumps(self.rooms, indent=4))
+        d.write(json.dumps(self.__dict__(), indent=4))
         d.close()
 
     def create_room(self, room_name: str, length: int = 8) -> str:
@@ -207,15 +207,22 @@ class Room:
     def get_room_members(self, code: str) -> dict:
         return self.rooms[code]['MembersList']
 
+    def get_room_members_list(self, code: str) -> list:
+        return list(self.rooms[code]['MembersList'].keys())
+
 
     class Uno:
         def __init__(self, room: str = '') -> None:
             self.room: str = room
-            self.uno_deck: list = []
+            self.uno_deck: List[Dict[str, Any]] = []
+            self.discard_pile: List[Dict[str, Any]] = []
+            self.player_data: Dict[str, Any] = {}
             self.create_uno_deck()
 
         def to_dict(self) -> Dict[str, Any]:
-            return {'Uno_Deck': self.uno_deck}
+            return {'Uno_Deck': self.uno_deck,
+                    'Discard_Pile': self.discard_pile,
+                    'Player_Data': self.player_data}
 
         def create_uno_deck(self, mode: str='4-color') -> None:
             with open('utilities/uno.json') as f:
@@ -290,3 +297,6 @@ class Room:
 
         def shuffle_cards(self) -> None:
             random.shuffle(self.uno_deck)
+
+        def add_players(self) -> None:
+            pass

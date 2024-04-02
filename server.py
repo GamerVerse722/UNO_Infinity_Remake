@@ -1,4 +1,4 @@
-from flask import Flask, render_template, session, redirect, request, url_for
+from flask import Flask, render_template, session, redirect, request, url_for, jsonify
 from flask_socketio import SocketIO, join_room, leave_room  # type: ignore
 from utilities.function import Room, Usertime
 # import threading
@@ -54,7 +54,12 @@ def form_room_join():
 
 @app.route('/data')
 def data():
-    return rooms.__dict__()
+    return jsonify(rooms.__dict__())
+
+@app.route('/writefile')
+def writefile():
+    rooms.write_file('saved/sample.json')
+    return '<h1>File Written</h1>'
 
 
 @app.route('/room/<code>')
@@ -83,10 +88,14 @@ def handle_message(message):
     if rooms.room_exist(session['Room']):
         socketio.emit('message_history', [rooms.add_message(session['Room'], session['UUID'], message)], to=session['Room'])
 
+@socketio.on('member_list')
+def member_list():
+    if rooms.room_exist(session['Room']):
+        print(rooms.get_room_members_list(session['Room']))
+
 @socketio.on('shuffle cards')
 def shuffle_cards():
     if rooms.room_exist(session['Room']):
-        print(rooms.rooms[session['Room']]['UnoData'])
         rooms.rooms[session['Room']]['UnoData'].shuffle_cards()
 
 
