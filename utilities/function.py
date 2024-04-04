@@ -1,4 +1,4 @@
-from typing import Dict, List, Any, Union, TypedDict
+from typing import Dict, List, Any, TypedDict
 from datetime import datetime
 import random, uuid, json, copy
 
@@ -138,9 +138,17 @@ class Usertime:
 class Room:
     # RoomData = Dict[str, Union[Any, 'Room.Uno']]
     def __init__(self) -> None:
+        """
+        Initialize room data
+        :return: None
+        """
         self.rooms: Dict[str, Format] = {}
 
     def __dict__(self) -> dict: # type: ignore
+        """
+        Converts rooms data into a dictionary
+        :return: dict
+        """
         rooms_data_dict: dict = copy.deepcopy(self.rooms)
         for room_code, room_data in rooms_data_dict.items():
             if isinstance(room_data['UnoData'], self.Uno):
@@ -148,6 +156,11 @@ class Room:
         return rooms_data_dict
 
     def write_file(self, output_dir: str) -> None:
+        """
+        Writes the data in rooms to a file of choice
+        :param output_dir: str
+        :return: None
+        """
         d = open(output_dir, 'w')
         d.write(json.dumps(self.__dict__(), indent=4))
         d.close()
@@ -174,6 +187,11 @@ class Room:
         return code
 
     def delete_room(self, room_code: str) -> None:
+        """
+        Delete the room given the room_code
+        :param room_code: str
+        :return: None
+        """
         self.rooms.pop(room_code)
 
     def add_player(self, code: str, username: str) -> str:
@@ -187,7 +205,13 @@ class Room:
         self.rooms[code]['MembersList'][user_uuid] = username
         return user_uuid
 
-    def remove_player(self, code: str, player_uuid: str) -> bool | None:
+    def remove_player(self, code: str, player_uuid: str) -> bool:
+        """
+        Removes a player from the room given the room code and player_uuid
+        :param code: str
+        :param player_uuid: str
+        :return: bool
+        """
         self.rooms[code]['MembersList'].pop(player_uuid)
         if len(self.rooms[code]['MembersList']) <= 0:
             self.delete_room(code)
@@ -243,7 +267,7 @@ class Room:
             self.room: str = room
             self.uno_deck: List[Dict[str, Any]] = []
             self.discard_pile: List[Dict[str, Any]] = []
-            self.player_data: Dict[str, Any] = {}
+            self.player_data: Dict[str, Dict[str, list]] = {}
 
         def to_dict(self) -> Dict[str, Any]:
             return {'Uno_Deck': self.uno_deck,
@@ -321,7 +345,7 @@ class Room:
 
             self.uno_deck = total_uno_deck
 
-        def uno_deck_exists(self):
+        def uno_deck_exists(self) -> bool:
             if not self.uno_deck:
                 return False
             else:
@@ -330,5 +354,8 @@ class Room:
         def shuffle_cards(self) -> None:
             random.shuffle(self.uno_deck)
 
-        def add_players(self) -> None:
-            pass
+        def add_players(self, players: List[str]) -> None:
+            for player in players:
+                self.player_data[player] = {
+                    "Cards": []
+                }

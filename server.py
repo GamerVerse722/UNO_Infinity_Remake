@@ -111,4 +111,4 @@ def room_leave():
 
 if __name__ == '__main__':
     # threading.Thread(target=second_clock).start()
-    socketio.run(app, debug=True, allow_unsafe_werkzeug=True, host='0.0.0.0')
+    socketio.run(app, debug=True, allow_unsafe_werkzeug=True, host='0.0.0.0') # type: ignore
