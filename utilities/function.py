@@ -1,7 +1,13 @@
-from typing import Dict, List, Any
+from typing import Dict, List, Any, Union, TypedDict
 from datetime import datetime
 import random, uuid, json, copy
 
+
+class Format(TypedDict):
+    RoomName: str
+    MembersList: Dict[str, str]
+    MessageHistory: List[Dict[str, str]]
+    UnoData: 'Room.Uno'
 
 def generate_code(length: int = 8) -> str:
     code: str = ""
@@ -130,8 +136,9 @@ class Usertime:
 
 
 class Room:
+    # RoomData = Dict[str, Union[Any, 'Room.Uno']]
     def __init__(self) -> None:
-        self.rooms: Dict[str, Any] = {}
+        self.rooms: Dict[str, Format] = {}
 
     def __dict__(self) -> dict: # type: ignore
         rooms_data_dict: dict = copy.deepcopy(self.rooms)
@@ -146,23 +153,36 @@ class Room:
         d.close()
 
     def create_room(self, room_name: str, length: int = 8) -> str:
+        """
+        Creates a room with the given name and returns a code back and optionally set the length of the code
+        :param room_name: str
+        :param length: int
+        :return: str
+        """
         while True:
             code: str = generate_code(length)
             if code not in self.rooms:
                 break
-        room_data: Dict[str, Any] = {
+
+        room_data: Format = {
             'RoomName': room_name,
             'MembersList': {},
             'MessageHistory': [],
             'UnoData': self.Uno()
         }
-        self.rooms.update({code: room_data})
+        self.rooms[code] = room_data
         return code
 
     def delete_room(self, room_code: str) -> None:
         self.rooms.pop(room_code)
 
     def add_player(self, code: str, username: str) -> str:
+        """
+        Adds a player to a room given the room code and the username that they desired and returns the uuid of the user
+        :param code: str
+        :param username: str
+        :return: str
+        """
         user_uuid: str = uuid.uuid4().__str__()
         self.rooms[code]['MembersList'][user_uuid] = username
         return user_uuid
@@ -178,6 +198,13 @@ class Room:
         return self.rooms[code]['MembersList'][player_uuid]
 
     def add_message(self, code: str, player_uuid: str, message) -> dict:
+        """
+        Adds message to the history and returns metadata for it given room code and player_uuid also included the message that they would like to send
+        :param code: str
+        :param player_uuid: str
+        :param message: str
+        :return: dict
+        """
         message_metadata: Dict[str, str] = {
             'PlayerName': self.get_player_name(code, player_uuid),
             'Message': message,
@@ -293,6 +320,12 @@ class Room:
                     print('----------------------------------------------------------------')
 
             self.uno_deck = total_uno_deck
+
+        def uno_deck_exists(self):
+            if not self.uno_deck:
+                return False
+            else:
+                return True
 
         def shuffle_cards(self) -> None:
             random.shuffle(self.uno_deck)
