@@ -51,5 +51,5 @@ function escapeHTMLString(inputString) {
 }
 
 function sendPing(source) {
-    socket.emit(source);
+    socket.emit('ping_server', source);
 }

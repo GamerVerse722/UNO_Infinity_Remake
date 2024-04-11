@@ -219,6 +219,12 @@ class Room:
         return False
 
     def get_player_name(self, code: str, player_uuid: str) -> str:
+        """
+        returns the name of the player in the room based on their uuid
+        :param code: str
+        :param player_uuid: str
+        :return: str
+        """
         return self.rooms[code]['MembersList'][player_uuid]
 
     def add_message(self, code: str, player_uuid: str, message) -> dict:
@@ -258,7 +264,12 @@ class Room:
     def get_room_members(self, code: str) -> dict:
         return self.rooms[code]['MembersList']
 
-    def get_room_members_list(self, code: str) -> list:
+    def get_room_members_list(self, code: str) -> List[str]:
+        """
+        returns a list of room members uuid
+        :param code: str
+        :return: List[str]
+        """
         return list(self.rooms[code]['MembersList'].keys())
 
 

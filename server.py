@@ -88,6 +88,18 @@ def handle_message(message):
     if rooms.room_exist(session.get('Room', False)):
         socketio.emit('message_history', [rooms.add_message(session['Room'], session['UUID'], message)], to=session['Room'])
 
+@socketio.on('ping_server')
+def ping_server(message):
+    if rooms.room_exist(session.get('Room', False)) is False:
+        return None
+
+    match message:
+        case 'member_list':
+            print(rooms.get_room_members_list(session['Room']))
+
+        case 'shuffle_cards':
+            rooms.rooms[session['Room']]['UnoData'].shuffle_cards()
+
 @socketio.on('member_list')
 def member_list():
     if rooms.room_exist(session.get('Room', False)):
