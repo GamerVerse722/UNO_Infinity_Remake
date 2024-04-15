@@ -244,24 +244,50 @@ class Room:
         return message_metadata
 
     def get_message_history(self, code: str) -> list:
+        """
+        returns the message history in a list for a given room
+        :param code: str
+        :return: list
+        """
         return self.rooms[code]['MessageHistory']
 
     def room_exist(self, code: str) -> bool:
+        """
+        returns a boolean if the room exists
+        :param code: str
+        :return: bool
+        """
         if self.rooms.get(code) is not None:
             return True
         else:
             return False
 
     def room_member_exist(self, code: str, player_uuid: str) -> bool:
+        """
+        returns a boolean if a member exists in a room from their player_uuid
+        :param code: str
+        :param player_uuid: str
+        :return: bool
+        """
         if self.rooms[code]['MembersList'].get(player_uuid, False):
             return True
         else:
             return False
 
     def get_room_name(self, code: str) -> str:
+        """
+        returns the room name given the room code
+        :param code: str
+        :return: str
+        """
         return self.rooms[code]['RoomName']
 
     def get_room_members(self, code: str) -> dict:
+        """
+        returns the members of the room given the room code
+        :param code: str
+        :return: dict
+        """
         return self.rooms[code]['MembersList']
 
     def get_room_members_list(self, code: str) -> List[str]:
