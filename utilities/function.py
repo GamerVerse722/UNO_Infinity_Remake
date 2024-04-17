@@ -136,7 +136,6 @@ class Usertime:
 
 
 class Room:
-    # RoomData = Dict[str, Union[Any, 'Room.Uno']]
     def __init__(self) -> None:
         """
         Initialize room data
