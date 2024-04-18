@@ -24,10 +24,10 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.58342464"
-     inkscape:cx="143.97746"
-     inkscape:cy="515.91924"
+     inkscape:cx="383.9399"
+     inkscape:cy="509.06317"
      inkscape:document-units="px"
-     inkscape:current-layer="layer15"
+     inkscape:current-layer="layer11"
      showgrid="false"
      showguides="true"
      inkscape:window-width="1440"
@@ -91,7 +91,7 @@
     <font
        horiz-adv-x="1000"
        id="font2"
-       inkscape:label="font 1">
+       inkscape:label="Uno Font">
       <font-face
          units-per-em="1000"
          ascent="750"
@@ -99,7 +99,7 @@
          x-height="400"
          descent="200"
          id="font-face2"
-         font-family="SVGFont 1" />
+         font-family="UnoNumber" />
       <missing-glyph
          d="M0,0h1000v1000h-1000z"
          id="missing-glyph2" />
@@ -190,8 +190,9 @@
        inkscape:groupmode="layer"
        id="layer15"
        inkscape:label="U+000039 9 9"
-       style="display:inline"
-       transform="translate(24)">
+       style="display:none"
+       transform="translate(24)"
+       sodipodi:insensitive="true">
       <path
          id="path32"
          style="font-weight:bold;font-size:884.391px;font-family:'Helvetica Neue';-inkscape-font-specification:'Helvetica Neue, Bold';display:inline;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke-width:6.49993"
@@ -438,9 +439,8 @@
        inkscape:groupmode="layer"
        id="layer11"
        inkscape:label="U+000030 0 0"
-       style="display:none"
-       transform="translate(24.002581)"
-       sodipodi:insensitive="true">
+       style="display:inline"
+       transform="translate(24.002581)">
       <path
          id="text23"
          style="font-weight:bold;font-size:884.456px;font-family:'Helvetica Neue';-inkscape-font-specification:'Helvetica Neue, Bold';display:inline;fill:#000000;stroke-width:6.50039"
