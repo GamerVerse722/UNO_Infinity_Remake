@@ -9,7 +9,7 @@
    id="svg1"
    inkscape:version="1.3.2 (091e20e, 2023-11-25)"
    xml:space="preserve"
-   sodipodi:docname="UnoCardTemplate.svg"
+   sodipodi:docname="test.svg"
    inkscape:export-filename="Test.png"
    inkscape:export-xdpi="1000"
    inkscape:export-ydpi="1000"
@@ -118,7 +118,7 @@
        x="1.879781"
        y="20.942068"
        id="text6"
-       inkscape:label="TN Uppper"><tspan
+       inkscape:label="TN Upper"><tspan
          sodipodi:role="line"
          id="tspan6"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:18.6px;font-family:'UnoNumber Top';-inkscape-font-specification:'UnoNumber Top, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.264583"
@@ -146,5 +146,5 @@
          sodipodi:role="line"
          id="tspan10"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:18.6px;font-family:'UnoNumber Top';-inkscape-font-specification:'UnoNumber Top, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.264583"
-         x="-54.871471"
-         y="-67.074867">1</tspan></text></g></svg>
+         x="0"
+         y="0">1</tspan></text></g></svg>
