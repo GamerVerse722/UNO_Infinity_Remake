@@ -4,10 +4,11 @@ import pprint # type: ignore
 room = Room()
 
 code = room.create_room('Among Us Room')
-uuid = room.add_player(code=code, username='Gamer Verse')
-room.add_message(code=code, player_uuid=uuid, message='Welcome to the Gamer Lobby')
+gamer_uuid = room.add_player(code=code, username='Gamer Verse')
+admin_uuid = room.add_player(code=code, username='Admin')
+room.add_message(code=code, player_uuid=gamer_uuid, message='Welcome to the Gamer Lobby')
 room.rooms[code]['UnoData'].add_players(room.get_room_members_list(code))
 
-room.write_file('saved/test.json')
+room.write_file('test/test.json')
 
-# pprint.pprint(room.__dict__())
+# pprint.pprint(room.__dict_x_())

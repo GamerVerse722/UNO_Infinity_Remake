@@ -166,7 +166,7 @@ class Room:
 
     def create_room(self, room_name: str, length: int = 8) -> str:
         """
-        Creates a room with the given name and returns a code back and optionally set the length of the code
+        Creates a room with the given name and returns a code and optionally set the length of the code
         :param room_name: str
         :param length: int
         :return: str
@@ -180,7 +180,7 @@ class Room:
             'RoomName': room_name,
             'MembersList': {},
             'MessageHistory': [],
-            'UnoData': self.Uno()
+            'UnoData': self.Uno(room=code)
         }
         self.rooms[code] = room_data
         return code
@@ -228,7 +228,7 @@ class Room:
 
     def add_message(self, code: str, player_uuid: str, message) -> dict:
         """
-        Adds message to the history and returns metadata for it given room code and player_uuid also included the message that they would like to send
+        Adds a message to the history and returns metadata for it given room code and player_uuid also included the message that they would like to send
         :param code: str
         :param player_uuid: str
         :param message: str
