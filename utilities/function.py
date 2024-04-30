@@ -298,6 +298,16 @@ class Room:
         return list(self.rooms[code]['MembersList'].keys())
 
 
+    def start_uno_game(self, code: str, split_amount: int = 7) -> None:
+        """
+        starts the uno game with room code and split amount per player
+        :param code: str
+        :param split_amount: int
+        :return: None
+        """
+        self.rooms[code]['UnoData'].start_game(member_list=self.get_room_members_list(code), split_amount=split_amount)
+
+
     class Uno:
         def __init__(self, room: str = '') -> None:
             self.room: str = room
@@ -408,3 +418,8 @@ class Room:
                 for user_uuid in self.player_data:
                     self.player_data[user_uuid]['Cards'].append(self.uno_deck.pop(0))
 
+        def start_game(self, member_list: List[str],  split_amount: int = 7, mode: str = '4-color') -> None:
+            self.add_players(players=member_list)
+            self.create_uno_deck(mode=mode)
+            self.shuffle_cards()
+            self.split_cards(split_amount=split_amount)
