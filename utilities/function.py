@@ -301,6 +301,7 @@ class Room:
     class Uno:
         def __init__(self, room: str = '') -> None:
             self.room: str = room
+            self.game_started = False
             self.uno_deck: List[Dict[str, Any]] = []
             self.discard_pile: List[Dict[str, Any]] = []
             self.player_data: Dict[str, Dict[str, list]] = {}
@@ -311,7 +312,7 @@ class Room:
                     'Player_Data': self.player_data}
 
         def create_uno_deck(self, mode: str='4-color') -> None:
-            with open('utilities/uno.json') as f:
+            with open('utilities/data/uno.json') as f:
                 data = json.load(f)
 
             wild_override: Dict[str, int] = {}
@@ -395,3 +396,15 @@ class Room:
                 self.player_data[player] = {
                     "Cards": []
                 }
+
+        def remove_uno_deck(self) -> None:
+            self.uno_deck = []
+
+        def uno_deck_length(self) -> int:
+            return len(self.uno_deck)
+
+        def split_cards(self, split_amount: int = 7) -> None:
+            for inter in range(split_amount):
+                for user_uuid in self.player_data:
+                    self.player_data[user_uuid]['Cards'].append(self.uno_deck.pop(0))
+
