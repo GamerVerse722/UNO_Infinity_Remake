@@ -421,5 +421,6 @@ class Room:
         def start_game(self, member_list: List[str],  split_amount: int = 7, mode: str = '4-color') -> None:
             self.add_players(players=member_list)
             self.create_uno_deck(mode=mode)
+            print(self.uno_deck_length())
             self.shuffle_cards()
             self.split_cards(split_amount=split_amount)

@@ -100,16 +100,6 @@ def ping_server(message):
         case 'shuffle_cards':
             rooms.rooms[session['Room']]['UnoData'].shuffle_cards()
 
-@socketio.on('member_list')
-def member_list():
-    if rooms.room_exist(session.get('Room', False)):
-        print(rooms.get_room_members_list(session['Room']))
-
-@socketio.on('shuffle cards')
-def shuffle_cards():
-    if rooms.room_exist(session.get('Room', False)):
-        rooms.rooms[session['Room']]['UnoData'].shuffle_cards()
-
 
 @socketio.on('disconnect')
 def room_leave():
