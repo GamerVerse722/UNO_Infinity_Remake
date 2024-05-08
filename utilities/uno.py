@@ -1,5 +1,5 @@
-from typing import Dict, List, Any, TypedDict
-import json, random, uuid
+from typing import Dict, List, Any, TypedDict # ignore
+import json, random
 
 class Uno:
     def __init__(self, room: str = '') -> None:

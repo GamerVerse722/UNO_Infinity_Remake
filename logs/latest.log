@@ -1,0 +1,10 @@
+[16:32:34] [utilities.log_wrapper] [INFO]: Room Class Initialized
+[16:32:34] [utilities.log_wrapper] [INFO]: Generated code: 89067743
+[16:32:34] [utilities.log_wrapper] [INFO]: Room created ( Among Us Lobby ), code = 89067743
+[16:32:34] [utilities.log_wrapper] [INFO]: RoomData Class for room ( Among Us Lobby ), code = 89067743
+[16:32:34] [utilities.log_wrapper] [INFO]: Converted Class Room to json
+[16:32:34] [utilities.log_wrapper] [INFO]: User added ( Gamer Verse, user_uuid = d767bb64-9c7e-44cc-9d8b-6e384122e269 ), code = 89067743
+[16:32:34] [utilities.log_wrapper] [INFO]: User exists ( Gamer Verse ), user_uuid = d767bb64-9c7e-44cc-9d8b-6e384122e269, code = 89067743
+[16:32:34] [utilities.log_wrapper] [INFO]: Room exists, code = 89067743
+[16:32:34] [utilities.log_wrapper] [INFO]: Converted Class Room to json
+[16:32:34] [utilities.log_wrapper] [INFO]: Wrote to file test/output.json
