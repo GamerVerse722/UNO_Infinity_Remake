@@ -1,7 +1,7 @@
-from typing import Dict, List, Any, TypedDict # ignore
+from typing import Dict
 from utilities.room_data import RoomData
 from utilities.log_wrapper import LoggerWrapper
-import json, random, uuid
+import json, random
 
 
 class Room:
@@ -17,11 +17,11 @@ class Room:
         self.logger.info("Converted Class Room to json")
         return rooms_data_dict
 
-    def __write__(self, output_dir: str) -> None:
-        file = open(output_dir, 'w')
+    def __write__(self, output_location: str) -> None:
+        file = open(output_location, 'w')
         file.write(json.dumps(self.__dict__(), indent=4))
         file.close()
-        self.logger.info(f"Wrote to file {output_dir}")
+        self.logger.info(f"Written to file {output_location}")
 
     def generate_code(self, code_length: int = 8) -> str:
         code: str = ""
@@ -46,7 +46,7 @@ class Room:
             self.logger.info(f"Room deleted ( {self.rooms[code].room_name} ), code = {code}")
             self.rooms.pop(code)
         else:
-            self.logger.warning(f"Room not found ( {code})")
+            self.logger.warning(f"Room not found ( {code} )")
 
     def room_exist(self, code: str, logging: bool = True) -> bool:
         if code in self.rooms:

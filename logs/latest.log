@@ -1,10 +1,19 @@
-[16:32:34] [utilities.log_wrapper] [INFO]: Room Class Initialized
-[16:32:34] [utilities.log_wrapper] [INFO]: Generated code: 89067743
-[16:32:34] [utilities.log_wrapper] [INFO]: Room created ( Among Us Lobby ), code = 89067743
-[16:32:34] [utilities.log_wrapper] [INFO]: RoomData Class for room ( Among Us Lobby ), code = 89067743
-[16:32:34] [utilities.log_wrapper] [INFO]: Converted Class Room to json
-[16:32:34] [utilities.log_wrapper] [INFO]: User added ( Gamer Verse, user_uuid = d767bb64-9c7e-44cc-9d8b-6e384122e269 ), code = 89067743
-[16:32:34] [utilities.log_wrapper] [INFO]: User exists ( Gamer Verse ), user_uuid = d767bb64-9c7e-44cc-9d8b-6e384122e269, code = 89067743
-[16:32:34] [utilities.log_wrapper] [INFO]: Room exists, code = 89067743
-[16:32:34] [utilities.log_wrapper] [INFO]: Converted Class Room to json
-[16:32:34] [utilities.log_wrapper] [INFO]: Wrote to file test/output.json
+[14:55:05] [INFO] [line 11] [room.Room.__init__]: Room Class Initialized
+[14:55:05] [INFO] [line 36] [room.Room.create_room]: Generated code: 48122795
+[14:55:05] [INFO] [line 40] [room.Room.create_room]: Room created ( Among Us Lobby ), code = 48122795
+[14:55:05] [INFO] [line 41] [room.Room.create_room]: RoomData Class for room ( Among Us Lobby ), code = 48122795
+[14:55:05] [INFO] [line 16] [room.Room.__dict__]: Converted Class Room to json, code = 48122795
+[14:55:05] [INFO] [line 17] [room.Room.__dict__]: Converted Class Room to json
+[14:55:05] [INFO] [line 40] [room_data.RoomData.add_user]: User added ( Gamer Verse, user_uuid = 567dddb2-dbf4-4244-ab99-ddf1a50a5f9d ), code = 48122795
+[14:55:05] [INFO] [line 55] [room_data.RoomData.user_exist]: User exists ( Gamer Verse ), user_uuid = 567dddb2-dbf4-4244-ab99-ddf1a50a5f9d, code = 48122795
+[14:55:05] [INFO] [line 54] [room.Room.room_exist]: Room exists, code = 48122795
+[14:55:05] [INFO] [line 65] [room_data.RoomData.get_user_uuid_list]: User uuid's = ['567dddb2-dbf4-4244-ab99-ddf1a50a5f9d'], code = 48122795
+[14:55:05] [INFO] [line 71] [room_data.RoomData.get_user_names_list]: Members name"s = ['Gamer Verse'], code = 48122795
+[14:55:05] [INFO] [line 85] [room_data.RoomData.add_message]: User ( Gamer Verse ) send message ( Among is the best game ever ), code: 48122795
+[14:55:05] [INFO] [line 89] [room_data.RoomData.get_message_history]: Get message history, code = 48122795
+[14:55:05] [INFO] [line 22] [room.Room.__write__]: Converted Class Room to json, code = 48122795
+[14:55:05] [INFO] [line 22] [room.Room.__write__]: Converted Class Room to json
+[14:55:05] [INFO] [line 24] [room.Room.__write__]: Written to file test/output.json
+[14:55:05] [INFO] [line 45] [room_data.RoomData.remove_user]: User removed ( Gamer Verse, user_uuid = 567dddb2-dbf4-4244-ab99-ddf1a50a5f9d), code = 48122795
+[14:55:05] [INFO] [line 48] [room_data.RoomData.remove_user]: Room deleted ( Among Us Lobby ), code = 48122795
+[14:55:05] [WARNING] room.Room.delete_room: Room not found ( 48122795)

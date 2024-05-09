@@ -1,10 +1,16 @@
 {
-    "89067743": {
+    "36361621": {
         "RoomName": "Among Us Lobby",
         "MembersList": {
-            "d767bb64-9c7e-44cc-9d8b-6e384122e269": "Gamer Verse"
+            "0a6e8618-ca2e-42b3-8bf2-a3e1b5532d27": "Gamer Verse"
         },
-        "MessageHistory": [],
+        "MessageHistory": [
+            {
+                "PlayerName": "Gamer Verse",
+                "Message": "Among is the best game ever",
+                "Time": "03:01:14 PM"
+            }
+        ],
         "GameStarted": false,
         "UnoData": null
     }
