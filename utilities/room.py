@@ -14,6 +14,7 @@ class Room:
         rooms_data_dict: dict = {}
         for code, room_data in self.rooms.items():
             rooms_data_dict[code] = room_data.__dict__()
+
         self.logger.info("Converted Class Room to json")
         return rooms_data_dict
 
@@ -31,14 +32,18 @@ class Room:
         self.logger.info(f"Generated code: {code}")
         return code
 
-    def create_room(self, room_name: str, code_length: int = 8) -> str:
+    def create_room(self, room_name: str, code_length: int = 8, max_user: int = 8) -> str:
+        if max_user < 0:
+            self.logger.warning(f"Room can't be created max user less than 0 > {max_user}, resting to 8 max user")
+            max_user = 8
+
         while True:
             code: str = self.generate_code(code_length=code_length)
             if code not in self.rooms:
                 break
 
         self.logger.info(f"Room created ( {room_name} ), code = {code}")
-        self.rooms[code] = RoomData(room_name=room_name, code=code, log_wrapper=self.logger, room_instance=self)
+        self.rooms[code] = RoomData(room_name=room_name, code=code, log_wrapper=self.logger, room_instance=self, max_user=max_user)
         return code
 
     def delete_room(self, code: str) -> None:
@@ -46,7 +51,7 @@ class Room:
             self.logger.info(f"Room deleted ( {self.rooms[code].room_name} ), code = {code}")
             self.rooms.pop(code)
         else:
-            self.logger.warning(f"Room not found ( {code} )")
+            self.logger.warning(f"Room not found ( {code} ) ")
 
     def room_exist(self, code: str, logging: bool = True) -> bool:
         if code in self.rooms:
