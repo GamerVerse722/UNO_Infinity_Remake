@@ -1,6 +1,6 @@
 from typing import Dict
 from unogame.room.room_data import RoomData
-from unogame.logger.log_wrapper import LoggerWrapper
+from unogame.logging.log_wrapper import LoggerWrapper
 import json, random
 
 

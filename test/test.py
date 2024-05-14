@@ -1,8 +1,10 @@
-from utilities.log_wrapper import LoggerWrapper
-from utilities.room import Room
+# from utilities.log_wrapper import LoggerWrapper
+# from utilities.room import Room
+from unogame.logging.log_wrapper import LoggerWrapper
+from unogame.room.room import Room
 import pprint # type: ignore
 
-logger: LoggerWrapper = LoggerWrapper('logs/latest.log', console=True)
+logger: LoggerWrapper = LoggerWrapper('logs/new.log', console=True)
 room: Room = Room(log_wrapper=logger)
 
 code = room.create_room('Among Us Lobby', max_user=-1)

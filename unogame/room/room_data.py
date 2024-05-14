@@ -1,4 +1,4 @@
-from unogame.logger.log_wrapper import LoggerWrapper
+from unogame.logging.log_wrapper import LoggerWrapper
 from unogame.uno.uno import Uno
 from typing import List, Dict, Union
 from datetime import datetime
@@ -90,13 +90,7 @@ class RoomData:
         return member_value
 
     def is_user_max_capacity(self, logging: bool = True) -> bool:  # type: ignore
-        if self.max_user == 0:
-            if logging:
-                self.logger.info(f'User is not at max capacity, code = {self.code}')
-
-            return False
-
-        if self.max_user >= self.amount_of_user(logging=False):
+        if self.max_user >= self.amount_of_user(logging=False) or self.max_user == 0:
             if logging:
                 self.logger.info(f'User is not at max capacity, code = {self.code}')
 
