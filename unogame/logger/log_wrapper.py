@@ -2,9 +2,9 @@ from colorlog import ColoredFormatter
 import logging, inspect, os
 
 class LoggerWrapper:
-    def __init__(self, filename: str = "", mode: str = ""):
+    def __init__(self, filename: str = "", console: bool | None = None):
         self.logger = None
-        if mode == "console":
+        if console is True:
             formatter = ColoredFormatter(
                 "%(log_color)s[%(asctime)s] [%(levelname)s] %(name)s: %(message)s%(reset)s",
                 datefmt="%H:%M:%S",
@@ -23,7 +23,7 @@ class LoggerWrapper:
                                 handlers=[handler])
             self.logger = logging.getLogger(__name__)
 
-        elif mode == "file":
+        elif console is False:
             logging.basicConfig(filename=filename,
                                     filemode="w",
                                     level=logging.DEBUG,
