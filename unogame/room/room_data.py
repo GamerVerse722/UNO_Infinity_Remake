@@ -52,15 +52,20 @@ class RoomData:
             return 'null'
 
 
-    def remove_user(self, user_uuid: str) -> None:
+    def remove_user(self, user_uuid: str) -> None | bool:
         if self.user_exist(user_uuid, logging=False):
             self.logger.info(f"User removed ( {self.members_list[user_uuid]}, user_uuid = {user_uuid}), code = {self.code}")
             self.members_list.pop(user_uuid, None)
             if len(self.members_list) <= 0:
                 self.room_instance.delete_room(self.code)
+                print("Removed")
+                return None
+
+            return True
 
         else:
             self.logger.warning(f"User does not exist, user_uuid = {user_uuid}, code = {self.code}")
+            return False
 
     def user_exist(self, user_uuid: str, logging: bool = True) -> bool:
         if user_uuid in self.members_list:

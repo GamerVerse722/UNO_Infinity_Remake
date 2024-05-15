@@ -53,7 +53,7 @@ class Room:
         else:
             self.logger.warning(f"Room not found ( {code} ) ")
 
-    def room_exist(self, code: str, logging: bool = True) -> bool:
+    def room_exist(self, code: str, logging: bool = False) -> bool:
         if code in self.rooms:
             if logging:
                 self.logger.info(f"Room exists, code = {code}")

@@ -1,6 +1,6 @@
 from flask import Flask, render_template, session, redirect, request, url_for, jsonify
 from flask_socketio import SocketIO, join_room, leave_room  # type: ignore
-# from utilities.function import Room, Usertime  # type: ignore
+# from utilities.function import Room, Usertime # type: ignore
 from unogame.logging.log_wrapper import LoggerWrapper
 from utilities.function import Usertime  # type: ignore
 from unogame.room.room import Room
@@ -49,13 +49,11 @@ def form_room_create():
 @app.route('/join', methods=['GET', 'POST'])
 def form_room_join():
     if request.method == 'POST':
-        room_name: str = request.form.get('room_name', '')
         user_name: str = request.form.get('username', '')
         code: str = request.form.get('room_code', '')
 
-        if room_name == '' or user_name == '' or code == '' or room.room_exist(code=code) is False:
+        if user_name == '' or code == '' or room.room_exist(code=code) is False:
             return redirect(url_for('main'))
-
 
         player_uuid: str = room.rooms[code].add_user(username=user_name)
         session['UUID'] = player_uuid
@@ -116,25 +114,36 @@ def handle_message(message):
 
 @socketio.on('ping_server')
 def ping_server(message):
-    if rooms.room_exist(session.get('Room', False)) is False:
-        return None
+    session_room = session.get('Room', '')
+    session_uuid = session.get('UUID', '')
+    if session_room == '' or session_uuid == '' or room.room_exist(session_room) is False:
+        return
 
     match message:
         case 'member_list':
-            print(rooms.get_room_members_list(session['Room']))
+            print(room.rooms[session_room].get_user_uuid_list())
 
         case 'shuffle_cards':
-            rooms.rooms[session['Room']]['UnoData'].shuffle_cards()
+            pass
+            # room.rooms[session_room].
 
 
 @socketio.on('disconnect')
 def room_leave():
-    if rooms.room_exist(session.get('Room', None)):
-        is_room_deleted: bool | None = rooms.remove_player(session['Room'], session['UUID'])
-        if is_room_deleted is False:
-            socketio.emit("member_list", rooms.get_room_members(session['Room']), to=session['Room'])
-        leave_room(session['Room'])
-        leave_room(session['UUID'])
+    code = session.get('Room', '')
+    uuid = session.get('UUID', '')
+    if code == '' or uuid == '' or room.room_exist(code) is False:
+        return
+
+    room_deleted: bool | None  = room.rooms[code].remove_user(uuid)
+    if room_deleted is False:
+        return
+
+    if room_deleted is True:
+        socketio.emit("member_list", room.rooms[code].members_list, to=code)
+
+    leave_room(code)
+    leave_room(uuid)
 
 
 if __name__ == '__main__':
