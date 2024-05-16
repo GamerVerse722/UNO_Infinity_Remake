@@ -34,24 +34,15 @@ class LoggerWrapper:
     @staticmethod
     def call_location() -> str:
         location_data: list = inspect.stack()
-        length: int = len(location_data)
-        for _ in range(length):
-            caller_frame = location_data[length-2]
-            caller_name: str = caller_frame.function
-            caller_class: str = caller_frame.frame.f_locals.get('self').__class__.__name__
-            caller_filename: str = os.path.basename(caller_frame.filename)[:-3]
-            caller_line_number: str = caller_frame.lineno
-            if caller_class == 'MyClass':
-                continue
-
-            if caller_class == 'NoneType':
-                return f"[line {caller_line_number}] [{caller_filename}.{caller_name}]"
-
-            elif caller_class != 'NoneType':
-                return f"[line {caller_line_number}] [{caller_filename}.{caller_class}.{caller_name}]"
+        for x in location_data:
+            line_number: str = x.lineno
+            file_name: str = os.path.basename(x.filename)[:-3]
+            source_class: str = x.frame.f_locals.get('self').__class__.__name__
+            source_name: str = x.function
+            if os.path.basename(x.filename)[:-3] != 'log_wrapper':
+                return f"[line {line_number}] [{file_name}.{source_class}.{source_name}]"
 
         return "Not Found"
-
 
     def info(self, message: str) -> None:
         if self.logger is None:

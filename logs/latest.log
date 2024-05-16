@@ -1,19 +1,28 @@
-[14:55:05] [INFO] [line 11] [room.Room.__init__]: Room Class Initialized
-[14:55:05] [INFO] [line 36] [room.Room.create_room]: Generated code: 48122795
-[14:55:05] [INFO] [line 40] [room.Room.create_room]: Room created ( Among Us Lobby ), code = 48122795
-[14:55:05] [INFO] [line 41] [room.Room.create_room]: RoomData Class for room ( Among Us Lobby ), code = 48122795
-[14:55:05] [INFO] [line 16] [room.Room.__dict__]: Converted Class Room to json, code = 48122795
-[14:55:05] [INFO] [line 17] [room.Room.__dict__]: Converted Class Room to json
-[14:55:05] [INFO] [line 40] [room_data.RoomData.add_user]: User added ( Gamer Verse, user_uuid = 567dddb2-dbf4-4244-ab99-ddf1a50a5f9d ), code = 48122795
-[14:55:05] [INFO] [line 55] [room_data.RoomData.user_exist]: User exists ( Gamer Verse ), user_uuid = 567dddb2-dbf4-4244-ab99-ddf1a50a5f9d, code = 48122795
-[14:55:05] [INFO] [line 54] [room.Room.room_exist]: Room exists, code = 48122795
-[14:55:05] [INFO] [line 65] [room_data.RoomData.get_user_uuid_list]: User uuid's = ['567dddb2-dbf4-4244-ab99-ddf1a50a5f9d'], code = 48122795
-[14:55:05] [INFO] [line 71] [room_data.RoomData.get_user_names_list]: Members name"s = ['Gamer Verse'], code = 48122795
-[14:55:05] [INFO] [line 85] [room_data.RoomData.add_message]: User ( Gamer Verse ) send message ( Among is the best game ever ), code: 48122795
-[14:55:05] [INFO] [line 89] [room_data.RoomData.get_message_history]: Get message history, code = 48122795
-[14:55:05] [INFO] [line 22] [room.Room.__write__]: Converted Class Room to json, code = 48122795
-[14:55:05] [INFO] [line 22] [room.Room.__write__]: Converted Class Room to json
-[14:55:05] [INFO] [line 24] [room.Room.__write__]: Written to file test/output.json
-[14:55:05] [INFO] [line 45] [room_data.RoomData.remove_user]: User removed ( Gamer Verse, user_uuid = 567dddb2-dbf4-4244-ab99-ddf1a50a5f9d), code = 48122795
-[14:55:05] [INFO] [line 48] [room_data.RoomData.remove_user]: Room deleted ( Among Us Lobby ), code = 48122795
-[14:55:05] [WARNING] room.Room.delete_room: Room not found ( 48122795)
+[08:53:46] [INFO] [line 11] [room.Room.__init__]: Room Class Initialized
+[08:53:46] [WARNING] werkzeug: Werkzeug appears to be used in a production deployment. Consider switching to a production web server instead.
+[08:53:46] [WARNING] werkzeug:  * Debugger is active!
+[08:53:46] [INFO] werkzeug:  * Debugger PIN: 699-081-073
+[08:53:46] [INFO] werkzeug: 10.10.153.133 - - [15/May/2024 08:53:46] "GET /socket.io/?EIO=4&transport=polling&t=OzyXyrk HTTP/1.1" 200 -
+[08:53:46] [INFO] werkzeug: 10.10.153.133 - - [15/May/2024 08:53:46] "[32mGET /room/612013 HTTP/1.1[0m" 302 -
+[08:53:46] [INFO] werkzeug: 10.10.153.133 - - [15/May/2024 08:53:46] "GET / HTTP/1.1" 200 -
+[08:53:46] [INFO] werkzeug: 10.10.153.133 - - [15/May/2024 08:53:46] "[36mGET /static/style/style.css HTTP/1.1[0m" 304 -
+[08:53:46] [INFO] werkzeug: 10.10.153.133 - - [15/May/2024 08:53:46] "[36mGET /static/script/index.js HTTP/1.1[0m" 304 -
+[08:53:52] [INFO] werkzeug: 10.10.153.133 - - [15/May/2024 08:53:52] "[32mPOST /create HTTP/1.1[0m" 302 -
+[08:53:52] [INFO] werkzeug: 10.10.153.133 - - [15/May/2024 08:53:52] "GET / HTTP/1.1" 200 -
+[08:53:52] [INFO] werkzeug: 10.10.153.133 - - [15/May/2024 08:53:52] "[36mGET /static/script/index.js HTTP/1.1[0m" 304 -
+[08:53:52] [INFO] werkzeug: 10.10.153.133 - - [15/May/2024 08:53:52] "[36mGET /static/style/style.css HTTP/1.1[0m" 304 -
+[08:53:57] [INFO] [line 1073] [threading.Thread._bootstrap_inner]: Generated code: 824336
+[08:53:57] [INFO] [line 1073] [threading.Thread._bootstrap_inner]: Room created ( Among Us ), code = 824336
+[08:53:57] [INFO] [line 1073] [threading.Thread._bootstrap_inner]: RoomData Class for room ( Among Us ), code = 824336
+[08:53:57] [INFO] [line 1073] [threading.Thread._bootstrap_inner]: User added ( The, user_uuid = 20926724-d499-4aba-9afb-817b24b44ed7 ), code = 824336
+[08:53:57] [INFO] werkzeug: 10.10.153.133 - - [15/May/2024 08:53:57] "[32mPOST /create HTTP/1.1[0m" 302 -
+[08:53:57] [INFO] [line 1073] [threading.Thread._bootstrap_inner]: User exists ( The ), user_uuid = 20926724-d499-4aba-9afb-817b24b44ed7, code = 824336
+[08:53:57] [INFO] werkzeug: 10.10.153.133 - - [15/May/2024 08:53:57] "GET /room/824336 HTTP/1.1" 200 -
+[08:53:57] [INFO] werkzeug: 10.10.153.133 - - [15/May/2024 08:53:57] "[36mGET /static/style/style.css HTTP/1.1[0m" 304 -
+[08:53:57] [INFO] werkzeug: 10.10.153.133 - - [15/May/2024 08:53:57] "[36mGET /static/script/room.js HTTP/1.1[0m" 304 -
+[08:53:57] [INFO] werkzeug: 10.10.153.133 - - [15/May/2024 08:53:57] "[36mGET /static/script/clipboard.js HTTP/1.1[0m" 304 -
+[08:53:57] [INFO] werkzeug: 10.10.153.133 - - [15/May/2024 08:53:57] "GET /socket.io/?EIO=4&transport=polling&t=OzyX_gY HTTP/1.1" 200 -
+[08:53:57] [INFO] werkzeug: 10.10.153.133 - - [15/May/2024 08:53:57] "POST /socket.io/?EIO=4&transport=polling&t=OzyX_gt&sid=04-TRVbtM885WnwvAAAB HTTP/1.1" 200 -
+[08:53:57] [INFO] werkzeug: 10.10.153.133 - - [15/May/2024 08:53:57] "GET /socket.io/?EIO=4&transport=polling&t=OzyX_gu&sid=04-TRVbtM885WnwvAAAB HTTP/1.1" 200 -
+[08:53:57] [INFO] werkzeug: 10.10.153.133 - - [15/May/2024 08:53:57] "GET /socket.io/?EIO=4&transport=polling&t=OzyX_hZ&sid=04-TRVbtM885WnwvAAAB HTTP/1.1" 200 -
+[08:54:02] [INFO] [line 1073] [threading.DaemonThread._bootstrap_inner]: User ( The ) send message ( Among Us ), code: 824336

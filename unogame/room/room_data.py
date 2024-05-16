@@ -58,7 +58,6 @@ class RoomData:
             self.members_list.pop(user_uuid, None)
             if len(self.members_list) <= 0:
                 self.room_instance.delete_room(self.code)
-                print("Removed")
                 return None
 
             return True
@@ -131,3 +130,6 @@ class RoomData:
     def get_message_history(self) -> list:
         self.logger.info(f'Get message history, code = {self.code}')
         return self.message_history
+
+    def start_uno_game(self):
+        self.uno_game = Uno(room=self.code)
