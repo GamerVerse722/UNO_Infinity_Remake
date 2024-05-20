@@ -2,7 +2,6 @@ from flask import Flask, render_template, session, redirect, request, url_for, j
 from flask_socketio import SocketIO, join_room, leave_room  # type: ignore
 # from utilities.function import Room, Usertime # type: ignore
 from unogame.logging.log_wrapper import LoggerWrapper
-from utilities.function import Usertime  # type: ignore
 from unogame.room.room import Room
 # import threading
 import time
@@ -13,13 +12,6 @@ socketio = SocketIO(app)
 
 logger: LoggerWrapper = LoggerWrapper('logs/latest.log', console=True)
 room: Room = Room(log_wrapper=logger)
-user_time = Usertime(time_interval=0.1)
-
-
-def second_clock():
-    while True:
-        user_time.user_timer_up()
-        time.sleep(0.1)
 
 
 @app.route('/')
