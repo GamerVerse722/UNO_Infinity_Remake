@@ -1,4 +1,4 @@
-from typing import Dict, List, Any, TypedDict # ignore
+from typing import Dict, List, Any
 import json, random
 
 class Uno:

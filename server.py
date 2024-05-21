@@ -4,7 +4,6 @@ from flask_socketio import SocketIO, join_room, leave_room  # type: ignore
 from unogame.logging.log_wrapper import LoggerWrapper
 from unogame.room.room import Room
 # import threading
-import time
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'secret!'
