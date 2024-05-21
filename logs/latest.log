@@ -1,0 +1,28 @@
+[08:53:46] [INFO] [line 11] [room.Room.__init__]: Room Class Initialized
+[08:53:46] [WARNING] werkzeug: Werkzeug appears to be used in a production deployment. Consider switching to a production web server instead.
+[08:53:46] [WARNING] werkzeug:  * Debugger is active!
+[08:53:46] [INFO] werkzeug:  * Debugger PIN: 699-081-073
+[08:53:46] [INFO] werkzeug: 10.10.153.133 - - [15/May/2024 08:53:46] "GET /socket.io/?EIO=4&transport=polling&t=OzyXyrk HTTP/1.1" 200 -
+[08:53:46] [INFO] werkzeug: 10.10.153.133 - - [15/May/2024 08:53:46] "[32mGET /room/612013 HTTP/1.1[0m" 302 -
+[08:53:46] [INFO] werkzeug: 10.10.153.133 - - [15/May/2024 08:53:46] "GET / HTTP/1.1" 200 -
+[08:53:46] [INFO] werkzeug: 10.10.153.133 - - [15/May/2024 08:53:46] "[36mGET /static/style/style.css HTTP/1.1[0m" 304 -
+[08:53:46] [INFO] werkzeug: 10.10.153.133 - - [15/May/2024 08:53:46] "[36mGET /static/script/index.js HTTP/1.1[0m" 304 -
+[08:53:52] [INFO] werkzeug: 10.10.153.133 - - [15/May/2024 08:53:52] "[32mPOST /create HTTP/1.1[0m" 302 -
+[08:53:52] [INFO] werkzeug: 10.10.153.133 - - [15/May/2024 08:53:52] "GET / HTTP/1.1" 200 -
+[08:53:52] [INFO] werkzeug: 10.10.153.133 - - [15/May/2024 08:53:52] "[36mGET /static/script/index.js HTTP/1.1[0m" 304 -
+[08:53:52] [INFO] werkzeug: 10.10.153.133 - - [15/May/2024 08:53:52] "[36mGET /static/style/style.css HTTP/1.1[0m" 304 -
+[08:53:57] [INFO] [line 1073] [threading.Thread._bootstrap_inner]: Generated code: 824336
+[08:53:57] [INFO] [line 1073] [threading.Thread._bootstrap_inner]: Room created ( Among Us ), code = 824336
+[08:53:57] [INFO] [line 1073] [threading.Thread._bootstrap_inner]: RoomData Class for room ( Among Us ), code = 824336
+[08:53:57] [INFO] [line 1073] [threading.Thread._bootstrap_inner]: User added ( The, user_uuid = 20926724-d499-4aba-9afb-817b24b44ed7 ), code = 824336
+[08:53:57] [INFO] werkzeug: 10.10.153.133 - - [15/May/2024 08:53:57] "[32mPOST /create HTTP/1.1[0m" 302 -
+[08:53:57] [INFO] [line 1073] [threading.Thread._bootstrap_inner]: User exists ( The ), user_uuid = 20926724-d499-4aba-9afb-817b24b44ed7, code = 824336
+[08:53:57] [INFO] werkzeug: 10.10.153.133 - - [15/May/2024 08:53:57] "GET /room/824336 HTTP/1.1" 200 -
+[08:53:57] [INFO] werkzeug: 10.10.153.133 - - [15/May/2024 08:53:57] "[36mGET /static/style/style.css HTTP/1.1[0m" 304 -
+[08:53:57] [INFO] werkzeug: 10.10.153.133 - - [15/May/2024 08:53:57] "[36mGET /static/script/room.js HTTP/1.1[0m" 304 -
+[08:53:57] [INFO] werkzeug: 10.10.153.133 - - [15/May/2024 08:53:57] "[36mGET /static/script/clipboard.js HTTP/1.1[0m" 304 -
+[08:53:57] [INFO] werkzeug: 10.10.153.133 - - [15/May/2024 08:53:57] "GET /socket.io/?EIO=4&transport=polling&t=OzyX_gY HTTP/1.1" 200 -
+[08:53:57] [INFO] werkzeug: 10.10.153.133 - - [15/May/2024 08:53:57] "POST /socket.io/?EIO=4&transport=polling&t=OzyX_gt&sid=04-TRVbtM885WnwvAAAB HTTP/1.1" 200 -
+[08:53:57] [INFO] werkzeug: 10.10.153.133 - - [15/May/2024 08:53:57] "GET /socket.io/?EIO=4&transport=polling&t=OzyX_gu&sid=04-TRVbtM885WnwvAAAB HTTP/1.1" 200 -
+[08:53:57] [INFO] werkzeug: 10.10.153.133 - - [15/May/2024 08:53:57] "GET /socket.io/?EIO=4&transport=polling&t=OzyX_hZ&sid=04-TRVbtM885WnwvAAAB HTTP/1.1" 200 -
+[08:54:02] [INFO] [line 1073] [threading.DaemonThread._bootstrap_inner]: User ( The ) send message ( Among Us ), code: 824336
