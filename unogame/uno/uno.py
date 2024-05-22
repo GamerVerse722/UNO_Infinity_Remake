@@ -9,13 +9,13 @@ class Uno:
         self.discard_pile: List[Dict[str, Any]] = []
         self.player_data: Dict[str, Dict[str, list]] = {}
 
-    def to_dict(self) -> Dict[str, Any]:
+    def __dict__(self) -> Dict[str, Any]:
         return {'Uno_Deck': self.uno_deck,
                 'Discard_Pile': self.discard_pile,
                 'Player_Data': self.player_data}
 
     def create_uno_deck(self, mode: str = '4-color') -> None:
-        with open('utilities/data/uno.json') as f:
+        with open('unogame/uno/configuration/uno.json') as f:
             data = json.load(f)
 
         wild_override: Dict[str, int] = {}

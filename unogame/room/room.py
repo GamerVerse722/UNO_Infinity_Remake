@@ -62,3 +62,7 @@ class Room:
             if logging:
                 self.logger.warning(f"Room does not exist, code = {code}")
             return False
+
+    def delete_every_room(self) -> None:
+        for code in list(self.rooms.keys()):
+            self.delete_room(code)
