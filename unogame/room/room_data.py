@@ -24,15 +24,31 @@ class RoomData:
         self.logger.info(f"RoomData Class for room ( {room_name} ), code = {code}")
 
     def __dict__(self) -> Dict[str, Union[str, dict, list, bool, dict, None]]:  # type: ignore
+        uno_game: dict = {}
+        if isinstance(self.uno_game, Uno):
+            uno_game = self.uno_game.__dict__()
+
         data: Dict[str, Union[str, dict, list, bool, dict, None]] = {
             "RoomName": self.room_name,
             "MembersList": self.members_list,
             "MessageHistory": self.message_history,
             "GameStarted": self.game_started,
-            "UnoData": self.uno_game  # type: ignore
+            "UnoData": uno_game
         }
         self.logger.info(f"Converted Class Room to json, code = {self.code}")
         return data
+
+    def __del__(self) -> None:
+        del self.logger
+        del self.room_name
+        del self.code
+        del self.max_user
+        del self.members_list
+        del self.message_history
+        del self.game_started
+        if isinstance(self.uno_game, Uno):
+            del self.uno_game
+
 
     def __write__(self, output_location: str) -> None:
         file = open(output_location, 'w')
@@ -133,3 +149,4 @@ class RoomData:
 
     def start_uno_game(self):
         self.uno_game = Uno(room=self.code)
+        self.game_started = True

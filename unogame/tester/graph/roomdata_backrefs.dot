@@ -1,0 +1,15 @@
+digraph ObjectGraph {
+  node[shape=box, style=filled, fillcolor=white];
+  o3124071381856[fontcolor=red];
+  o3124071381856[label="Room\n<unogame.room.room.Room object at 0x0000"];
+  o3124071381856[fillcolor="0,0,1"];
+  o3124068987584 -> o3124071381856 [label="room",weight=2];
+  o3124068987584[label="dict\n25 items"];
+  o3124068987584[fillcolor="0,0,0.93"];
+  o3124068804752 -> o3124068987584 [label="__dict__",weight=10];
+  o3124068852064 -> o3124068987584 [label="__globals__",weight=10];
+  o3124068804752[label="module\n__main__"];
+  o3124068804752[fillcolor="0.3,1,0.86"];
+  o3124068852064[label="function\n<function <module> at 0x000002D76103A160"];
+  o3124068852064[fillcolor="0,0,0.86"];
+}

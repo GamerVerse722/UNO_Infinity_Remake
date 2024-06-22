@@ -49,7 +49,7 @@ class Room:
     def delete_room(self, code: str) -> None:
         if self.room_exist(code, logging=False):
             self.logger.info(f"Room deleted ( {self.rooms[code].room_name} ), code = {code}")
-            self.rooms.pop(code)
+            del self.rooms[code]
         else:
             self.logger.warning(f"Room not found ( {code} ) ")
 
